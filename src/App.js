@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import '/Users/usuario/hoteles/node_modules/bulma/css/bulma-rtl.min.css';
 
-function App() {
+import {today} from '/Users/usuario/hoteles/src/scripts/data.js';
+import Hero from './Components/Hero';
+import DateFilter from './Components/DateFilter';
+import OptionsFilter from './Components/OptionsFilter';
+import Filters from './Components/Filters';
+import Hotel from './Components/Hotel';
+
+
+class App extends Component {
+
+  constructor () {
+    super();
+
+  this.state= { 
+    filters: {
+    dateFrom: today, // Proviene del archivo data.js
+    //dateTo: new Date(today.valueOf() + 86400000),
+    country: undefined,
+    price: undefined,
+    rooms: undefined
+   } 
+ }
+}
+
+render() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    
+      <Hero filters={ this.state.filters }/>
+      <Filters filters={ this.state.filters }/>
+      <Hotel  />
+  
+      
     </div>
-  );
+  )
+
+ }
 }
 
 export default App;
