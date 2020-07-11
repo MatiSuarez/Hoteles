@@ -1,12 +1,15 @@
 import React from 'react'
+import { hotelsData } from '../scripts/data'
+import Foto from '../images/sainte-jeanne.jpg'
 
 export default function Hotel () {
+
 
     return (
 <div className="card">
   <div className="card-image">
     <figure className="image is-4by3">
-      <img src="/Users/usuario/hoteles/src/images/sainte-jeanne.jpg" alt="Sainte Jeanne Boutique & Spa" />
+      <img src={ Foto } alt="Sainte Jeanne Boutique & Spa" />
     </figure>
   </div>
   <div className="card-content">

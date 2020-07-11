@@ -3,9 +3,16 @@ import React from 'react'
 import DateFilter from './DateFilter';
 import OptionsFilter from './OptionsFilter';
 
-export default function Filters(props) {
 
-    const { filters } = props
+export default function Filters({ filters, options }) {
+
+
+    const  handleOptionChange=(event)=> {
+        let payload = filters
+        payload[event.target.name] = event.target.value
+      
+        this.props.onFilterChange(payload)
+      }
 
     return(
         <nav className='navbar is-info' style= { { justifyContent:'center' } }>
@@ -29,7 +36,7 @@ export default function Filters(props) {
                               { value: 'Chile', name: 'Chile' },
                               { value: 'Uruguay', name: 'Uruguay' }] }
                  selected= { filters.country }
-                 icon='globe'
+                 icon='fas fa-globe'
                 />
             </div>
             <div className='navbar-item'>
@@ -40,7 +47,7 @@ export default function Filters(props) {
                               { value: 3, name: '$$$' },
                               { value: 4, name: '$$$$' } ] }
                  selected= { filters.price }
-                 icon='dolar-sign'
+                 icon='fas fa-dollar-sign'
                 />
             </div>
             <div className='navbar-item'>
@@ -50,7 +57,7 @@ export default function Filters(props) {
                               { value: 20, name: 'Hotel Mediano' },
                               { value: 30, name: 'Hotel Grande' } ] }
                  selected= { filters.rooms }
-                 icon='bed'
+                 icon='fas fa-bed'
                 />
             </div>
         </nav>
