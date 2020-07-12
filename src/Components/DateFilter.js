@@ -1,18 +1,14 @@
 import React from 'react'
 import { filter } from 'o'
 
-export default function DateFilter ( { icon, date, name } ) {
-
-   const handleDateChange = (event) => { 
-       alert('PRUEBA 2')
-    }
+export default function DateFilter ( { icon, date, name, onChangeDate } ) {
 
     return (
         <div className='field'> 
             <div className='control has-icons-left'>
                 <input className='input' 
                        type='date' 
-                       onChange= { handleDateChange} 
+                       onChange= { onChangeDate } 
                        value= { date }
                         name= { name }
                         />

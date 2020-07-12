@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import './App.css';
 import '/Users/usuario/hoteles/node_modules/bulma/css/bulma-rtl.min.css';
 
@@ -24,19 +24,45 @@ const filters= {
     country: undefined,
     price: undefined,
     rooms: undefined
-   }
+   };
 
 const options= {
    value: undefined, name: 'Cualquier Tamaño',
    value: 10, name: 'Hotel Pequeño',
    value: 20, name: 'Hotel Mediano',
    value: 30, name: 'Hotel Grande',
-   }
+   };
 
    
    const handleFilterChange= (payload)=> {
      filters= payload
-   }
+   };
+
+   const [ setFilters ] = useState();
+
+   const handleChangeDateFrom = ( e ) => {
+
+    let selectedDate = e.target.value;  
+    const dateFormat = selectedDate.replace(/-/gi,',');
+    const newDateFrom = new Date(dateFormat);
+    
+    setFilters({
+      ...filters,
+      dateFrom : newDateFrom
+    });
+   };
+   
+   const handleChangeDateTo = ( e ) => {
+    
+    let selectedDate = e.target.value;  
+    const dateFormat = selectedDate.replace(/-/gi,',');
+    const newDateTo = new Date(dateFormat);
+    
+    setFilters({
+      ...filters,
+      dateTo : newDateTo
+    });
+   };
 
    const hotel= { hotelsData }
 
@@ -44,8 +70,13 @@ const options= {
   return (
     <div>
     
-      <Hero filters={ filters } onFitersChange= { handleFilterChange } />
-      <Filters filters={ filters, options }/>
+      <Hero filters={ filters }
+            onFitersChange= { handleFilterChange }
+       />
+      <Filters filters={ filters, options } 
+               handleChangeDateFrom={ handleChangeDateFrom }
+               handleChangeDateTo={ handleChangeDateTo }
+      />
 
       <div className="column is-one-third">
        <Hotels data={ hotel } />
