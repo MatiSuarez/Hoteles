@@ -1,15 +1,15 @@
 import React from 'react'
-import { filter } from 'o'
+import moment from 'moment';
 
-export default function DateFilter ( { icon, date, name, onChangeDate } ) {
+export default function DateFilter ( { icon, date, name, onChange } ) {
 
     return (
         <div className='field'> 
             <div className='control has-icons-left'>
                 <input className='input' 
                        type='date' 
-                       onChange= { onChangeDate } 
-                       value= { date }
+                       onChange= { onChange } 
+                       value= { moment(date).format('YYYY-MM-DD') }
                         name= { name }
                         />
                 <span className='icon is-small is-left'>

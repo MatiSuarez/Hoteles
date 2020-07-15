@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 export default function Hero ({ filters }) {
  
@@ -15,8 +16,8 @@ export default function Hero ({ filters }) {
           <div className="hero-body">
               <div className="container">
                    <h1 className="title">Hoteles</h1>
-                   <h2 className="subtitle">
-                   Desde el <strong> { filters.dateFrom.toLocaleDateString('es-AR', options) } </strong> hasta el <strong> { filters.dateTo.toLocaleDateString('es-AR', options) }</strong>
+                   <h2 className='subtitle'>
+    Desde el <strong> { moment(filters.dateFrom).format('LL') } </strong> hasta el <strong> { moment(filters.dateTo).format('LL') } { filters.country } { filters.price } { filters.rooms }</strong>
                    </h2>
               </div>
           </div>

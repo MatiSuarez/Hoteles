@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import './App.css';
 import '/Users/usuario/hoteles/node_modules/bulma/css/bulma-rtl.min.css';
+import moment from 'moment';
 
 
 import '@fortawesome/fontawesome';
@@ -18,7 +19,7 @@ import Hotels from './Components/Hotels';
 
 export default function App() {
 
-const filters= {
+const filtersInitialValues= {
     dateFrom: today, // Proviene del archivo data.js
     dateTo: new Date (today.valueOf() + 86400000),
     country: undefined,
@@ -33,49 +34,42 @@ const options= {
    value: 30, name: 'Hotel Grande',
    };
 
+
+   const [ filters, setFilters ] = useState(filtersInitialValues);
    
-   const handleFilterChange= (payload)=> {
-     filters= payload
-   };
-
-   const [ setFilters ] = useState();
-
-   const handleChangeDateFrom = ( e ) => {
-
-    let selectedDate = e.target.value;  
-    const dateFormat = selectedDate.replace(/-/gi,',');
-    const newDateFrom = new Date(dateFormat);
-    
-    setFilters({
-      ...filters,
-      dateFrom : newDateFrom
-    });
-   };
-   
-   const handleChangeDateTo = ( e ) => {
-    
-    let selectedDate = e.target.value;  
-    const dateFormat = selectedDate.replace(/-/gi,',');
-    const newDateTo = new Date(dateFormat);
-    
-    setFilters({
-      ...filters,
-      dateTo : newDateTo
-    });
-   };
 
    const hotel= { hotelsData }
+
+   const handleChangeFilter= (e) => {
+     const name = e.target.name;
+     const type = e.target.type
+     const value =  (type === 'date') ? moment(e.target.value) :  e.target.value
+     
+     /*if ( type === 'date' ) { 
+       value = new Date( value )
+      } */
+
+
+
+
+
+     setFilters( { 
+       ...filters,
+      [ name ]: value,
+     } )
+
+     console.log( name, value, type)  
+   }
 
 
   return (
     <div>
     
       <Hero filters={ filters }
-            onFitersChange= { handleFilterChange }
+            
        />
       <Filters filters={ filters, options } 
-               handleChangeDateFrom={ handleChangeDateFrom }
-               handleChangeDateTo={ handleChangeDateTo }
+               onChange = { handleChangeFilter }
       />
 
       <div className="column is-one-third">

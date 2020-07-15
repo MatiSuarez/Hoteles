@@ -4,15 +4,9 @@ import DateFilter from './DateFilter';
 import OptionsFilter from './OptionsFilter';
 
 
-export default function Filters({ filters, options }) {
+export default function Filters({ filters, options, onChange }) {
+    console.log(filters)
 
-
-    const  handleOptionChange=(event)=> {
-        let payload = filters
-        payload[event.target.name] = event.target.value
-      
-        this.props.onFilterChange(payload)
-      }
 
     return(
         <nav className='navbar is-info' style= { { justifyContent:'center' } }>
@@ -20,12 +14,17 @@ export default function Filters({ filters, options }) {
                 <DateFilter 
                  date= { filters.dateFrom }
                  icon='sign-in-alt'
+                 onChange= { onChange }
+                 name= 'dateFrom'
+
                 />
             </div>
             <div className='navbar-item'>
                 <DateFilter 
                  date= { filters.dateTo }
                  icon='sign-in-alt'
+                 onChange= { onChange }
+                 name= 'dateTo'
                 />
             </div>
             <div className='navbar-item'>
@@ -37,6 +36,8 @@ export default function Filters({ filters, options }) {
                               { value: 'Uruguay', name: 'Uruguay' }] }
                  selected= { filters.country }
                  icon='fas fa-globe'
+                 onChange= { onChange }
+                 name= 'country'
                 />
             </div>
             <div className='navbar-item'>
@@ -48,6 +49,8 @@ export default function Filters({ filters, options }) {
                               { value: 4, name: '$$$$' } ] }
                  selected= { filters.price }
                  icon='fas fa-dollar-sign'
+                 onChange= { onChange }
+                 name= 'price'
                 />
             </div>
             <div className='navbar-item'>
@@ -58,6 +61,8 @@ export default function Filters({ filters, options }) {
                               { value: 30, name: 'Hotel Grande' } ] }
                  selected= { filters.rooms }
                  icon='fas fa-bed'
+                 onChange= { onChange }
+                 name= 'rooms'
                 />
             </div>
         </nav>
