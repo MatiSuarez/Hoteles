@@ -3,12 +3,6 @@ import moment from 'moment';
 
 export default function Hero ({ filters }) {
  
-    const options = {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      };
 
     return (
 
@@ -19,9 +13,9 @@ export default function Hero ({ filters }) {
                    <h2 className='subtitle'>
                    Desde el  <strong> { moment(filters.dateFrom).format('LL') } </strong> 
                    hasta el <strong> { moment(filters.dateTo).format('LL') } </strong>
-                   <strong> { filters.country} </strong>
-                   <strong> { filters.price } </strong> 
-                   <strong> { filters.rooms } </strong> 
+                   <strong> { filters.country ? ` en ${filters.country}` : '' } </strong>
+                   <strong> { filters.price ? ` por ${( filters.price ) }` : '' } </strong> 
+                   <strong> { filters.rooms  ? ` en ${filters.rooms} ` : '' } </strong> 
                    </h2>
               </div>
           </div>
