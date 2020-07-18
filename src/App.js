@@ -25,25 +25,15 @@ export default function App() {
         rooms: undefined,
     } ;
 
-    const options = {
-        value: undefined,
-        name: 'Cualquier Tamaño',
-        value: 10,
-        name: 'Hotel Pequeño',
-        value: 20,
-        name: 'Hotel Mediano',
-        value: 30,
-        name: 'Hotel Grande',
-    } ;
 
     const [ filters, setFilters ] = useState( filtersInitialValues ) ;
 
-    const hotel = { hotelsData } ;
+    const [hotels, setHotels] = useState(hotelsData);
 
     const handleChangeFilter = ( e ) => {
         const { name } = e.target ;
         const { type } = e.target ;
-        const value = ( type === 'date' ) ? moment( e.target.value ) : e.target.value ;
+        const value = ( type === 'price' ) ? moment( e.target.value ) : e.target.value ;
 
         /* if ( type === 'date' ) {
        value = new Date( value )
@@ -62,12 +52,12 @@ export default function App() {
 
             <Hero filters={ filters } />
             <Filters
-                filters={ filters, options }
+                filters={ filters }
                 onChange={ handleChangeFilter }
             />
 
             <div className="column is-one-third">
-                <Hotels data={ hotel } />
+                <Hotel hotel={ hotels[0] } />
             </div>
 
         </div>

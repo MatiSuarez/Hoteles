@@ -18,7 +18,7 @@ export default function OptionsFilter ({ options, selected, icon, name, onChange
                         {
                             options.map( (option)=>
                             <option key= { option.name } 
-                                    value= { option.value }
+                                    value= { option.name}
                                     >
                                   {option.name}
                              </option>      

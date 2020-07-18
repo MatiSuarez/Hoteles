@@ -8,19 +8,23 @@ export default function Hero ({ filters }) {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
-      }; 
+      };
 
     return (
 
-       <section className="hero is-primary">
+       <section className="hero is-primary"> 
           <div className="hero-body">
               <div className="container">
                    <h1 className="title">Hoteles</h1>
                    <h2 className='subtitle'>
-    Desde el <strong> { moment(filters.dateFrom).format('LL') } </strong> hasta el <strong> { moment(filters.dateTo).format('LL') } { filters.country } { filters.price } { filters.rooms }</strong>
+                   Desde el  <strong> { moment(filters.dateFrom).format('LL') } </strong> 
+                   hasta el <strong> { moment(filters.dateTo).format('LL') } </strong>
+                   <strong> { filters.country} </strong>
+                   <strong> { filters.price } </strong> 
+                   <strong> { filters.rooms } </strong> 
                    </h2>
               </div>
           </div>
         </section>
-    )
+    ) ;
 }

@@ -56,9 +56,9 @@ export default function Filters({ filters, options, onChange }) {
             <div className='navbar-item'>
                 <OptionsFilter 
                  options= { [ { value: undefined, name: 'Cualquier Tamaño' },
-                              { value: 10, name: 'Hotel Pequeño' },
-                              { value: 20, name: 'Hotel Mediano' },
-                              { value: 30, name: 'Hotel Grande' } ] }
+                              { value: 10, name: 'Hoteles Pequeños' },
+                              { value: 20, name: 'Hoteles Medianos' },
+                              { value: 30, name: 'Hoteles Grandes' } ] }
                  selected= { filters.rooms }
                  icon='fas fa-bed'
                  onChange= { onChange }
