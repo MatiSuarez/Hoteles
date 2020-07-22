@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react' ;
 import './App.css' ;
-import '/Users/usuario/hoteles/node_modules/bulma/css/bulma-rtl.min.css' ;
+import '../node_modules/bulma/css/bulma-rtl.min.css' ;
 import moment from 'moment' ;
 
 import '@fortawesome/fontawesome' ;
@@ -8,12 +8,9 @@ import '@fortawesome/free-solid-svg-icons' ;
 import '@fortawesome/fontawesome-svg-core' ;
 import '@fortawesome/fontawesome-free-solid' ;
 
-import { today, hotelsData } from '/Users/usuario/hoteles/src/scripts/data.js' ;
+import { today, hotelsData } from './scripts/data.js' ;
 import Hero from './Components/Hero' ;
-import DateFilter from './Components/DateFilter' ;
-import OptionsFilter from './Components/OptionsFilter' ;
 import Filters from './Components/Filters' ;
-import Hotel from './Components/Hotel' ;
 import Hotels from './Components/Hotels' ;
 
 export default function App() {
@@ -50,15 +47,15 @@ export default function App() {
     return (
         <div>
 
-            <Hero filters={ filters } />
+            <Hero
+                 filters={ filters } />
+            
             <Filters
                 filters={ filters }
-                onChange={ handleChangeFilter }
-            />
+                onChange={ handleChangeFilter } />
 
-            <div className="column is-one-third">
-                <Hotel hotel={ hotels[0] } />
-            </div>
+                <Hotels 
+                    hotels={ hotels } />
 
         </div>
     ) ;

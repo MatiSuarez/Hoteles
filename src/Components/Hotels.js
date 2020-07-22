@@ -8,9 +8,9 @@ export default function Hotels( { hotels } ) {
         <section className="section" style={ {marginTop: '3em'} }>
          <div className="container">
           <div className="columns is-multiline">
-               { hotelsData.map( hotel => (
+               { hotels.map( hotel => (
                     <div key={ hotel.slug } className="column is-one-third">
-                    <Hotel data={ hotel } />
+                    <Hotel hotel={ hotel } />
                     </div>
                ) ) }   
           </div>

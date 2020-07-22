@@ -1,42 +1,27 @@
 import React from 'react'
-import { hotelsData } from '../scripts/data'
+import Tag from './Tag' ;
 
 export default function Hotel ( { hotel }) {
-
 
     return (
 <div className="card">
   <div className="card-image">
     <figure className="image is-4by3">
-      <img src={ hotel.photo } alt={ hotel.slug } />
+      <img src={ hotel.photo } alt={ hotel.name } />
     </figure>
   </div>
   <div className="card-content">
     <p className="title is-4"> { hotel.name } </p>
     <p> { hotel.description } </p>
     <div className="field is-grouped is-grouped-multiline" style={{marginTop: '1em'}}>
-      <div className="control">
-        <div className="tags has-addons">
-          <span className="tag is-medium is-info"><i className="fas fa-map-marker"></i></span>
-          <span className="tag is-medium"> { hotel.city }, { hotel.country }</span>
-        </div>
-      </div>
-      <div className="control">
-        <div className="tags has-addons">
-          <span className="tag is-medium is-info"><i className="fas fa-bed"></i></span>
-    <span className="tag is-medium"> { hotel.rooms } </span>
-        </div>
-      </div>
-      <div className="control">
-        <div className="tags">
-          <span className="tag is-medium is-info">
-            <i className="fas fa-dollar-sign" style={{margin: '0 .125em'}}></i>
-            <i className="fas fa-dollar-sign" style={{margin: '0 .125em'}}></i>
-            <i className="fas fa-dollar-sign" style={{margin: '0 .125em', opacity: '.25'}}></i>
-            <i className="fas fa-dollar-sign" style={{margin: '0 .125em', opacity: '.25'}}></i>
-          </span>
-        </div>
-      </div>
+       <Tag icons={ [ { name:'fa-map-marker' } ] } >{ hotel.city }, { hotel.country }</Tag>
+       <Tag icons={ [ { name:'fa-bed' } ] } >{ hotel.rooms } Habitaciones</Tag>
+        <Tag icons={
+                    Array.from( { length: 4 } )
+                    .fill( { name:'fa-dollar-sign' }, 0, hotel.price )
+                    .fill( { name:'fa-dollar-sign', style:{ opacity: '.25' } }, hotel.price, 4 )  
+                   }
+         />
     </div>
   </div>
   <div className="card-footer">
