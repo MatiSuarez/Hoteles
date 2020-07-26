@@ -12,10 +12,11 @@ export default function Hero ({ filters }) {
                    <h1 className="title">Hoteles</h1>
                    <h2 className='subtitle'>
                    Desde el  <strong> { moment(filters.dateFrom).format('LL') } </strong> 
-                   hasta el <strong> { moment(filters.dateTo).format('LL') } </strong>
-                   <strong> { filters.country ? ` en ${filters.country}` : '' } </strong>
-                   <strong> { filters.price ? ` por ${( filters.price ) }` : '' } </strong> 
-                   <strong> { filters.rooms  ? ` en ${filters.rooms} ` : '' } </strong> 
+                   hasta el <strong> { moment(filters.dateTo).format('LL') } 
+                   { filters.country ? ` en ${filters.country}` : '' } 
+                   { filters.price ? ` por ${( filters.price ) }` : '' } 
+                   
+                   { filters.rooms  ? ` en ${filters.rooms} ` : '' } </strong> 
                    </h2>
               </div>
           </div>
