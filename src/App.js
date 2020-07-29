@@ -65,7 +65,7 @@ export default function App() {
         }
 
         if ( filters.country && !( filters.country === 'Todos los países' ) ) {
-            filteredHotels = filteredHotels.filter( hotel => hotel.country === filters.country ) ;
+            filteredHotels = hotelsData.filter( hotel => hotel.country === filters.country ) ;
         }
 
         if ( filters.rooms && !( filters.rooms === 'Cualquier tamaño' ) ) {
